@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 20% 7%;
+    --foreground: 45 10% 85%;
+
+    --card: 220 18% 10%;
+    --card-foreground: 45 10% 85%;
+
+    --popover: 220 18% 10%;
+    --popover-foreground: 45 10% 85%;
+
+    --primary: 45 92% 54%;
+    --primary-foreground: 220 20% 7%;
+
+    --secondary: 220 15% 14%;
+    --secondary-foreground: 45 10% 75%;
+
+    --muted: 220 15% 14%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 45 92% 54%;
+    --accent-foreground: 220 20% 7%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 45 55% 28%;
+    --input: 220 15% 18%;
+    --ring: 45 92% 54%;
+
+    --radius: 0.3rem;
+
+    --amber: 45 92% 54%;
+    --amber-dim: 45 65% 32%;
+    --amber-glow: 45 92% 54%;
+    --green-status: 142 70% 45%;
+    --grid-color: 220 20% 11%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-mono-hud {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .hud-grid-bg {
+    background-image:
+      linear-gradient(hsl(var(--grid-color)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--grid-color)) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  /* Crosshair-style corners */
+  .hud-corner-tl::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 32px; height: 32px;
+    border-top: 2px solid hsl(var(--amber-dim));
+    border-left: 2px solid hsl(var(--amber-dim));
+  }
+  .hud-corner-tl::after {
+    content: '';
+    position: absolute;
+    top: -6px; left: 12px;
+    width: 2px; height: 8px;
+    background: hsl(var(--amber-dim));
+  }
+
+  .hud-corner-tr {
+    position: relative;
+  }
+  .hud-corner-tr::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 32px; height: 32px;
+    border-top: 2px solid hsl(var(--amber-dim));
+    border-right: 2px solid hsl(var(--amber-dim));
+  }
+  .hud-corner-tr::after {
+    content: '';
+    position: absolute;
+    top: 12px; right: -6px;
+    width: 8px; height: 2px;
+    background: hsl(var(--amber-dim));
+  }
+
+  .hud-corner-bl::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 32px; height: 32px;
+    border-bottom: 2px solid hsl(var(--amber-dim));
+    border-left: 2px solid hsl(var(--amber-dim));
+  }
+
+  .hud-corner-br::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 32px; height: 32px;
+    border-bottom: 2px solid hsl(var(--amber-dim));
+    border-right: 2px solid hsl(var(--amber-dim));
+  }
+
+  .amber-glow {
+    box-shadow: 0 0 24px hsl(var(--amber) / 0.18), 0 0 48px hsl(var(--amber) / 0.06);
+  }
+
+  .amber-glow-strong {
+    box-shadow: 0 0 16px hsl(var(--amber) / 0.35), 0 0 36px hsl(var(--amber) / 0.12);
+  }
+
+  .slider-hud::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 34px;
+    background: hsl(var(--amber));
+    border-radius: 3px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .slider-hud::-moz-range-thumb {
+    width: 22px;
+    height: 34px;
+    background: hsl(var(--amber));
+    border-radius: 3px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .slider-hud::-webkit-slider-runnable-track {
+    height: 6px;
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+
+  .slider-hud::-moz-range-track {
+    height: 6px;
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+}
